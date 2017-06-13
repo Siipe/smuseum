@@ -1,0 +1,10 @@
+{
+    "autoload" : {
+        "psr-4" : {
+            "Core\\"    : "Core",
+            "Application\\"   : "Modules/application",
+            "Admin\\"   : "Modules/admin",
+            "Seven\\"   : "vendor/Seven"
+        }
+    }
+}

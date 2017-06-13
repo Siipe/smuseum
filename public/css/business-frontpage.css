@@ -1,0 +1,12 @@
+body {padding-top: 50px}
+h1.welcome {font-size: 2em}
+.business-header {height: 400px; position: relative}
+.tagline {text-shadow: 0 0 10px #000; color: #FFF}
+.img-center {margin: 0 auto}
+footer {margin-top: 25px; min-height:50px; background: #555; color: #FFF; line-height: 3.7}
+footer a, footer a:active, footer a:hover, footer a:visited {color: #FFF}
+a.module-wrapper {color: #333; text-decoration: none}
+a.module-wrapper > div {padding: 10px 7px; min-height: 200px; border-radius: 2px}
+a.module-wrapper > div:hover {background: #F1F1F1}
+div.subscriptions {position: absolute; bottom: 0; left: 0; right: 0}
+div.subscriptions a {color: #333}
