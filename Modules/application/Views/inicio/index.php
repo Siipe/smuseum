@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="welcome">Seja bem vindo ao SNES MUSEUM</h1>
-        <p>Para navegar entre os modulos, selecione um dos serviços listados abaixo.</p>
+        <h1 class="welcome">Seja bem vindo ao SUPER MUSEUM</h1>
+        <p>Aqui você encontra os MELHORES produtos da Nintendo!</p>
     </div>
 </div>
 <hr />
@@ -10,39 +10,31 @@
         <div class="side top text-center">
             <a class="module-wrapper" href="#">
                 <div class="col-md-4">
-                    <?= $this->img('responsavel.png', array('alt' => 'Responsável')) ?>
-                    <h2>Responsável</h2>
-                    <p>Espaço onde o responsável poderá consultar informações sobre o aluno.</p>
+                    <i class="fa fa-archive fa-4x" aria-hidden="true"></i>
+                    <h2>Consoles</h2>
+                    <p>Diversos consoles , desde os mais antigos até os mais recentes!</p>
                 </div>
             </a>
             <a class="module-wrapper" href="#">
                 <div class="col-md-4">
-                    <?= $this->img('aluno.png', array('alt' => 'Aluno')) ?>
-                    <h2>Aluno</h2>
-                    <p>Espaço onde o aluno irá consultar seu andamento no colégio e outros assuntos, como notícias e etc.</p>
-                </div>
-            </a>
-            <a class="module-wrapper" href="">
-                <div class="col-md-4">
-                    <?= $this->img('professor.png', array('alt' => 'Professor')) ?>
-                    <h2>Professor</h2>
-                    <p>Espaço onde o professor fará suas solicitações, lançamentos de notas e acompanhamento da evolução dos seus alunos.</p>
+                    <i class="fa fa-rocket fa-4x" aria-hidden="true"></i>
+                    <h2>Jogos</h2>
+                    <p>Diversos jogos desde os cartuchos até os DVDs!</p>
                 </div>
             </a>
             <a class="module-wrapper" href="#">
                 <div class="col-md-4">
-                    <?= $this->img('director.png', array('alt' => 'Diretor')) ?>
-                    <h2>Diretor</h2>
-                    <p>Espaço onde o diretor fará suas solicitações, acompanhamentos, etc.</p>
-                </div>
-            </a>
-            <a class="module-wrapper" href="#">
-                <div class="col-md-4">
-                    <?= $this->img('inscricao.png', array('alt' => 'Incrição')) ?>
-                    <h2>Inscrições</h2>
-                    <p>Espaço das inscrições.</p>
+                    <i class="fa fa-gamepad fa-4x" aria-hidden="true"></i>
+                    <h2>Controles</h2>
+                    <p>Coleção completa de controles desde os mais clássicos aos mais modernos!</p>
                 </div>
             </a>
         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <hr />
+        <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque a purus nec sem condimentum eleifend quis at ex. Donec ac massa et lorem congue faucibus. Mauris eget sollicitudin neque. Mauris lacus nibh, ultrices non nisl tempor, tincidunt aliquam diam. Morbi pretium viverra nunc a pulvinar. Aenean euismod ultricies efficitur. Mauris nibh erat, sollicitudin et porta id, facilisis vitae purus. Sed iaculis dui non eros rutrum, nec efficitur elit sagittis. Quisque fringilla risus quis libero imperdiet scelerisque. Vestibulum at auctor nunc. Praesent elementum rutrum sollicitudin. Curabitur auctor, erat vitae porttitor fringilla, sem ipsum auctor enim, vel ornare est sem volutpat risus. Aenean vitae aliquet mauris. Curabitur vitae scelerisque lacus, non consequat mauris. Maecenas ac tempor sapien.</p>
     </div>
 </div>
