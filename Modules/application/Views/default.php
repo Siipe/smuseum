@@ -25,10 +25,10 @@
         <header class="business-header">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
                         <h3 class="tagline">Super Museum</h3>
                     </div>
-                    <div class="col-lg-6 pull-right text-right">
+                    <div class="col-lg-6 col-md-6 col-sm-6 pull-right text-right">
                         <div class="entrance">
                             <a href="javascript:void(0)" data-toggle="modal" data-target="#modal-login"><i class="fa fa-sign-in m-r-5" aria-hidden="true"></i>Login</a>
                             <a class="m-l-10" href="javascript:void(0)" data-toggle="modal" data-target="#modal-cadastro"><i class="fa fa-plus m-r-5" aria-hidden="true"></i>Cadastro</a>
@@ -51,24 +51,19 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="#"><i class="fa fa-home m-r-5" aria-hidden="true"></i> Home</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-archive m-r-5" aria-hidden="true"></i> Consoles</a>
+                            <a href="<?= $this->url() ?>"><i class="fa fa-home m-r-5" aria-hidden="true"></i> Home</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-rocket m-r-5" aria-hidden="true"></i> Jogos</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-gamepad m-r-5" aria-hidden="true"></i> Controles</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-arrow-right m-r-5" aria-hidden="true"></i> Sobre nós</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
+        <div class="container">
+            <?php include ROOT . DS . 'Modules' . DS . 'flash.php' ?>
+        </div>
 
         <div class="container">
             <?= $data['content'] ?>

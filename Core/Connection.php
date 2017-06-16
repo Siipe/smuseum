@@ -2,10 +2,15 @@
 
 namespace Core;
 
+use PDO;
+
 class Connection
 {
     private function __construct() {}
 
+    /**
+     * @var PDO
+     */
     private static $connection;
 
     /**
@@ -21,8 +26,7 @@ class Connection
             if (empty($config)) {
                 throw new \Exception('CONNECTION: No DB config available');
             }
-
-            //TODO - Conexao com banco
+            self::$connection = new PDO($config['dsn'], $config['user'], $config['password']);
         }
         return self::$connection;
     }

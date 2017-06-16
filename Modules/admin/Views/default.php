@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title><?= \Core\Config::get('title') ?></title>
+        <title><?= $this->getTitle() ?></title>
 
         <?= $this->css('bootstrap.min') ?>
         <?= $this->css('font-awesome-4.7.0/css/font-awesome.min') ?>
@@ -22,7 +22,23 @@
         <![endif]-->
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <header class="business-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <h3 class="tagline">Área do Usuário</h3>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 pull-right text-right">
+                        <div class="entrance">
+                            <a href="<?= $this->url(array('module' => 'admin', 'controller' => 'usuario', 'action' => 'perfil'), true) ?>"><?= $this->getUserSession()['name'] ?></a>
+                            <a class="m-l-10" href="<?= $this->url(array('module' => 'admin', 'controller' => 'usuario', 'action' => 'logout'), true) ?>"><i class="fa fa-sign-out m-r-5" aria-hidden="true"></i>Sair</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="navbar navbar-inverse" role="navigation" data-spy="affix" data-offset-top="197">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -31,42 +47,26 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="http://www.sistemacei.com.br/site/default.asp">
-                        <i class="fa fa-home" aria-hidden="true"></i>
-                        Site oficial
-                    </a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav pull-right">
+                    <ul class="nav navbar-nav">
                         <li>
-                            <a href="#"><i class="fa fa-cogs" aria-hidden="true"></i> Administração</a>
+                            <a href="<?= $this->url() ?>"><i class="fa fa-home m-r-5" aria-hidden="true"></i> Home</a>
+                        </li>
+                        <li>
+                            <a href="<?= $this->url() ?>"><i class="fa fa-user m-r-5" aria-hidden="true"></i> Meu Perfil</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-rocket m-r-5" aria-hidden="true"></i> Jogos</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <header class="business-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h3 class="tagline">Portal Acadêmico</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="container subscriptions">
-                <div class="row">
-                    <div class="col-lg-6 pull-right text-right">
-                        <h4>
-                            <a href="#">
-                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                Inscrições abertas
-                            </a>
-                        </h4>
-                    </div>
-                </div>
-            </div>
-        </header>
+        <div class="container">
+            <?php include ROOT . DS . 'Modules' . DS . 'flash.php' ?>
+        </div>
 
         <div class="container">
             <?= $data['content'] ?>
@@ -75,13 +75,7 @@
         <footer>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 text-left">&copy; <?= date('Y') ?> - All Rights Reserved, MITHSAN CONSULTORIA E SISTEMAS</div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 text-right">
-                        <a href="http://www.mithsan.com.br/site" target="_blank">
-                            <i class="fa fa-external-link" aria-hidden="true"></i>
-                            MithSan WEB
-                        </a>
-                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 text-left">&copy; <?= date('Y') ?> - All Rights Reserved, CES-JF</div>
                 </div>
             </div>
         </footer>

@@ -37,6 +37,13 @@ final class App
             self::$allowed = array(
                 'application' => array(
                     'inicio'
+                ),
+                'admin' => array(
+                    'usuario' => array(
+                        'cadastrar',
+                        'login',
+                        'logout'
+                    )
                 )
             );
 
@@ -105,10 +112,10 @@ final class App
      */
     private static function handleAccess()
     {
-        /*if (!self::isAllowed()) {
+        if (!self::isAllowed()) {
             self::$session->unsetAttribute('last-activity');
-            self::$router->redirect(array('route' => self::$router->getModule(), 'controller' => 'usuarios', 'action' => 'login'));
-        }*/
+            self::$router->redirect(array('route' => self::$router->getModule(), 'controller' => 'usuario', 'action' => 'login'));
+        }
     }
 
     /**

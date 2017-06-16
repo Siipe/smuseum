@@ -29,8 +29,7 @@ Config::set('default_session_timeout', 600);
 
 //Parametros de conexao com o BD
 Config::set('db', array(
-    'host' => 'mithsan9.mysql.dbaas.com.br',
-    'user' => 'mithsan9',
-    'password' => 'mudar123',
-    'dbname' => 'mithsan9'
+    'dsn' => 'mysql:dbname=smuseum;host=127.0.0.1',
+    'user' => 'root',
+    'password' => 'feniX123'
 ));

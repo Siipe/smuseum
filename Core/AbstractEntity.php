@@ -17,7 +17,10 @@ abstract class AbstractEntity
     public function hydrate(array $data)
     {
         foreach ($data as $property => $value) {
-            $setterName = 'set' . ucfirst(strtolower($property));
+            $propertyArray = explode('_', strtolower($property));
+            $propertyArray = array_map('ucfirst', $propertyArray);
+            $setterName = 'set' . implode('', $propertyArray);
+
             if (is_callable(array($this, $setterName))) {
                 $this->{$setterName}($value);
             }
@@ -39,5 +42,15 @@ abstract class AbstractEntity
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param $id
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
     }
 }
