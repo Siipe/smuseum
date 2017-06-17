@@ -156,10 +156,12 @@ function confirmDialog(title, message, callback)
         message: message,
         buttons: {
             cancel: {
-                label: '<i class="fa fa-times"></i> Cancelar'
+                label: '<i class="fa fa-times"></i> Cancelar',
+                className: 'btn btn-sm btn-default'
             },
             confirm: {
-                label: '<i class="fa fa-check"></i> OK'
+                label: '<i class="fa fa-check"></i> OK',
+                className: 'btn btn-sm btn-primary'
             }
         },
         callback: function (result) {
