@@ -27,6 +27,7 @@ class Connection
                 throw new \Exception('CONNECTION: No DB config available');
             }
             self::$connection = new PDO($config['dsn'], $config['user'], $config['password']);
+            self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         return self::$connection;
     }

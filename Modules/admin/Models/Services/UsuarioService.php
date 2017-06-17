@@ -16,19 +16,20 @@ class UsuarioService extends AbstractService
      * @param $usuario Usuario
      * @return Usuario
      */
-    public function save($usuario)
+    public function salvar($usuario)
     {
         $bindParams = array(
             'nome' => $usuario->getNome(),
             'email' => $usuario->getEmail(),
             'login' => $usuario->getLogin(),
-            'senha' => $usuario->getSenha(),
-            'avatar' => $usuario->getAvatar()
+            'senha' => $usuario->getSenha()
         );
         if ($usuario->isNew()) {
-            $query = 'INSERT INTO ' . $this->table . '(nome, email, login, senha, avatar) VALUES (:nome, :email, :login, :senha, :avatar)';
+            $usuario->setDataInclusao(new \DateTime());
+            $query = 'INSERT INTO ' . $this->table . '(nome, email, login, senha, data_inclusao) VALUES (:nome, :email, :login, :senha, :data_inclusao)';
+            $bindParams['data_inclusao'] = $usuario->getDataInclusao()->format('Y-m-d H:i');
         } else {
-            $query = 'UPDATE ' . $this->table . 'SET nome=:nome, email=:email, login=:login, senha=:senha, avatar=:avatar WHERE id = :id';
+            $query = 'UPDATE ' . $this->table . 'SET nome=:nome, email=:email, login=:login, senha=:senha WHERE id = :id';
             $bindParams['id'] = $usuario->getId();
         }
 
@@ -54,7 +55,6 @@ class UsuarioService extends AbstractService
             return false;
         }
         $usuario = new Usuario();
-        echo '<pre>';
         return $usuario->hydrate($result);
     }
 }

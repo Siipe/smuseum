@@ -32,9 +32,12 @@ class Usuario extends AbstractEntity
     private $data_inclusao;
 
     /**
-     * @var string
+     * @return string
      */
-    private $avatar;
+    public function getDataInclusaoFormatada()
+    {
+        return $this->data_inclusao->format('l\, d/m/Y');
+    }
 
     /**
      * @return string
@@ -122,26 +125,10 @@ class Usuario extends AbstractEntity
      */
     public function setDataInclusao($data_inclusao)
     {
-        $datetime = \DateTime::createFromFormat('Y-m-d H:i:s', $data_inclusao);
-        $this->data_inclusao = $datetime;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAvatar()
-    {
-        return $this->avatar;
-    }
-
-    /**
-     * @param string $avatar
-     * @return Usuario
-     */
-    public function setAvatar($avatar)
-    {
-        $this->avatar = $avatar;
+        if (!($data_inclusao instanceof \DateTime)) {
+            $data_inclusao = \DateTime::createFromFormat('Y-m-d H:i:s', $data_inclusao);
+        }
+        $this->data_inclusao = $data_inclusao;
         return $this;
     }
 }

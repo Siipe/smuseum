@@ -103,6 +103,15 @@ class Controller
     }
 
     /**
+     * Pega o usuario da Sessao
+     * @return mixed|null
+     */
+    protected function getUserSession()
+    {
+        return $this->session->getAttribute(Config::get('login-role'));
+    }
+
+    /**
      * @return mixed
      */
     public function getData()

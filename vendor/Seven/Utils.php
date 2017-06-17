@@ -13,7 +13,7 @@ final class Utils
      * @param $text
      * @return string
      */
-    public static function encrypt($text) : string
+    public static function encrypt($text)
     {
         if ($text == '')
             return $text;
@@ -26,7 +26,7 @@ final class Utils
      * @param $text
      * @return string
      */
-    public static function decrypt($text) : string
+    public static function decrypt($text)
     {
         if ($text == '')
             return $text;
@@ -42,7 +42,7 @@ final class Utils
      * @param bool $encryptedArrayKey
      * @return array
      */
-    public static function encryptArray(array $array, $encryptedArrayKey = false) : array
+    public static function encryptArray($array, $encryptedArrayKey = false)
     {
         $encrypted = array();
         if ($encryptedArrayKey) {
@@ -63,7 +63,7 @@ final class Utils
      * @param bool $encryptedArrayKey
      * @return array
      */
-    public static function decryptArray(array $array, $encryptedArrayKey = false) : array
+    public static function decryptArray($array, $encryptedArrayKey = false)
     {
         $decrypted = array();
         if ($encryptedArrayKey) {
@@ -116,7 +116,7 @@ final class Utils
      * @param int $decimals
      * @return string
      */
-    public static function humanBytes($bytes, $decimals = 2) : string
+    public static function humanBytes($bytes, $decimals = 2)
     {
         $sz = 'BKMGTP';
         $factor = (int)floor((strlen($bytes) - 1) / 3);
@@ -130,7 +130,7 @@ final class Utils
      * @param string $mask
      * @return string
      */
-    public static function mask($val, string $mask) : string
+    public static function mask($val, $mask)
     {
         $masked = '';
         $k = 0;
@@ -170,26 +170,23 @@ final class Utils
         }
     }
 
-    public static function sendMail()
-    {
-        $mail = new \PHPMailer();
-        $mail->IsSMTP();
-        $mail->SMTPAuth = true;
-        $mail->SMTPSecure = 'ssl';
-        $mail->Host = "smtp.gmail.com";
-        $mail->Port = 465;
-        $mail->IsHTML(true);
-        $mail->Username = "siipecapoeira@gmail.com";
-        $mail->Password = "(*lfagsiipe1992)*";
-        $mail->SetFrom("lfaugusto.gomes@gmail.com");
-        $mail->Subject = "Test";
-        $mail->Body = "hello";
-        $mail->AddAddress("siipecapoeira@gmail.com");
+    /**
+     * @param $string
+     * @param $path
+     * @return bool|string
+     */
+    public static function decodeAndMoveBase64File($string, $path) {
+        list($type, $string) = explode(';', $string);
+        list(, $string)      = explode(',', $string);
+        $extensionArray = explode('/', $type);
+        $string = base64_decode($string);
 
-        if(!$mail->Send()) {
-            echo "Mailer Error: " . $mail->ErrorInfo;
-        } else {
-            echo "Message has been sent";
+        $imageName = substr( md5(rand()), 0, 15) . '.' . end($extensionArray);
+
+        if(file_put_contents($path . $imageName, $string)) {
+            return $imageName;
         }
+
+        return false;
     }
 }

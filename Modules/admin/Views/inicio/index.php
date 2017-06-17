@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="welcome">Bem vindo de volta, <?= $this->getUserSession()['name'] ?></h1>
+        <h3 class="welcome">Olá, <?= explode(' ', $this->getUserSession()['name'])[0] ?>!</h3>
     </div>
 </div>
 <hr />
 <div class="side top text-center">
-    <a class="module-wrapper" href="#">
+    <a class="module-wrapper" href="<?= $this->url(array('module' => 'admin', 'controller' => 'jogo')) ?>">
         <div class="col-md-6 col-sm-6">
             <i class="fa fa-rocket fa-4x" aria-hidden="true"></i>
             <h2>Jogos</h2>

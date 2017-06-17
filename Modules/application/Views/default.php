@@ -88,11 +88,11 @@
                         <form action="<?= $this->url(array('admin', 'usuario', 'login')) ?>" method="POST">
                             <div class="form-group">
                                 <label for="login">Login*</label>
-                                <input class="form-control" id="login" name="login">
+                                <input class="form-control" id="login" name="login" required>
                             </div>
                             <div class="form-group">
                                 <label for="senha">Senha*</label>
-                                <input type="password" class="form-control" id="senha" name="senha">
+                                <input type="password" class="form-control" id="senha" name="senha" required>
                             </div>
                             <div class="text-right">
                                 <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Fechar</button>
@@ -115,23 +115,23 @@
                         <form action="<?= $this->url(array('admin', 'usuario', 'cadastrar')) ?>" method="POST">
                             <div class="form-group">
                                 <label for="nome">Nome*</label>
-                                <input class="form-control" id="nome" name="nome">
+                                <input class="form-control" id="nome" name="nome" required>
                             </div>
                             <div class="form-group">
                                 <label for="email">E-mail*</label>
-                                <input type="email" class="form-control" id="email" name="email">
+                                <input type="email" class="form-control" id="email" name="email" required>
                             </div>
                             <div class="form-group">
                                 <label for="login">Login*</label>
-                                <input class="form-control" id="login" name="login">
+                                <input class="form-control" id="login" name="login" required>
                             </div>
                             <div class="form-group">
                                 <label for="senha">Senha*</label>
-                                <input type="password" class="form-control" id="senha" name="senha">
+                                <input type="password" class="form-control" id="senha" name="senha" required>
                             </div>
                             <div class="form-group">
                                 <label for="confirmar">Confirmar*</label>
-                                <input type="password" class="form-control" id="confirmar" name="confirmar">
+                                <input type="password" class="form-control" id="confirmar" name="confirmar" required>
                             </div>
                             <div class="text-right">
                                 <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Fechar</button>

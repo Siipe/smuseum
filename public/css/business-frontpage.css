@@ -3,7 +3,7 @@ h1.welcome {font-size: 2em}
 .navbar {border-radius: 0}
 .tagline {text-shadow: 0 0 10px #000; color: #FFF}
 .img-center {margin: 0 auto}
-footer {margin-top: 25px; min-height:50px; background: #555; color: #FFF; line-height: 3.7}
+footer {margin-top: 25px; min-height:50px; background: #888; color: #FFF; line-height: 3.7}
 footer a, footer a:active, footer a:hover, footer a:visited {color: #FFF}
 a.module-wrapper {color: #333; text-decoration: none}
 a.module-wrapper > div {padding: 10px 7px; min-height: 200px; border-radius: 2px}
@@ -12,9 +12,9 @@ div.subscriptions {position: absolute; bottom: 0; left: 0; right: 0}
 div.subscriptions a {color: #333}
 .affix {top: 0; width: 100%; z-index:1000}
 .affix + .container {padding-top: 70px}
-.navbar-inverse {background: #5d3557; border-color: #361832}
+.navbar-inverse {background: #605ca8; border-color: #605ca8}
 .navbar-inverse .navbar-nav > li > a {color: #FFF}
-.navbar-inverse .navbar-nav > li > a:hover {background: #361832}
-.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {background: #361832; border-color: #361832}
+.navbar-inverse .navbar-nav > li > a:hover {background: #4A48A8}
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {background: #605ca8; border-color: #605ca8}
 div.entrance {margin-top: 20px}
 div.entrance a {color: #333; font-size: .9em}
