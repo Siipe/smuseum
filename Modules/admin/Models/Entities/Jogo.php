@@ -41,6 +41,9 @@ class Jogo extends AbstractEntity
      */
     private $imagem;
 
+    /** @var  Usuario */
+    private $usuario;
+
     /**
      * @param int $decimals
      * @return string
@@ -56,6 +59,14 @@ class Jogo extends AbstractEntity
     public function getCaminhoImagem()
     {
         return 'jogos' . DS . $this->imagem;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDataInclusaoFormatada()
+    {
+        return $this->data_inclusao->format('l\, d/m/Y');
     }
 
     /**
@@ -126,7 +137,7 @@ class Jogo extends AbstractEntity
      */
     public function setPreco($preco)
     {
-        $this->preco = $preco;
+        $this->preco = (float) $preco;
         return $this;
     }
 
@@ -163,7 +174,7 @@ class Jogo extends AbstractEntity
      */
     public function setIdUsuarioInclusao($id_usuario_inclusao)
     {
-        $this->id_usuario_inclusao = $id_usuario_inclusao;
+        $this->id_usuario_inclusao = (int) $id_usuario_inclusao;
         return $this;
     }
 
@@ -183,5 +194,21 @@ class Jogo extends AbstractEntity
     {
         $this->imagem = $imagem;
         return $this;
+    }
+
+    /**
+     * @return Usuario
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * @param Usuario $usuario
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
     }
 }

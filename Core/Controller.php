@@ -76,7 +76,7 @@ class Controller
     protected function getService($service)
     {
         if(class_exists($service)) {
-            return new $service();
+            return new $service($this->getUserSession());
         }
         throw new \Exception(sprintf('Service "%s" does not exist!'));
     }

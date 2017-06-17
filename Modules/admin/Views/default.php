@@ -17,6 +17,7 @@
 
         <?= $this->js('jquery-2.2.3.min') ?>
         <?= $this->js('bootstrap.min') ?>
+        <?= $this->js('bootbox') ?>
         <?= $this->js('jquery.slimscroll.min') ?>
         <?= $this->js('app.min') ?>
         <?= $this->js('demo') ?>
@@ -55,6 +56,7 @@
                                         <li><a href="<?= $this->url(array('module' => 'admin', 'controller' => 'jogo', 'action' => 'inserir')) ?>">Inserir</a></li>
                                     </ul>
                                 </li>
+                                <li><a href="<?= $this->url(array('module' => 'admin', 'controller' => 'carrinho')) ?>"><i class="fa fa-cart-plus m-r-5" aria-hidden="true"></i> Carrinho</a></li>
                             </ul>
                             <form class="navbar-form navbar-left" role="search" action="<?= $this->url(array('module' => 'admin', 'controller' => 'jogo')) ?>">
                                 <div class="form-group">
@@ -103,6 +105,10 @@
                     &copy; <?= date('Y') ?> - All Rights Reserved, CES-JF
                 </div>
             </footer>
+        </div>
+        <div id="seven-loading">
+            <div class="loading-overlay animationload"></div>
+            <div class="loading-icon osahanloading"></div>
         </div>
     </body>
 </html>

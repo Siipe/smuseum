@@ -32,7 +32,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="senha">Senha*</label>
-                                <input type="password" class="form-control" id="senha" name="senha">
+                                <input type="password" class="form-control" id="senha" name="senha_criptografada">
                             </div>
                             <div class="text-right">
                                 <a href="<?= $this->url(array(), false) ?>" class="btn btn-sm btn-default"><i class="fa fa-home m-r-5" aria-hidden="true"></i> Home</a>

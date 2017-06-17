@@ -5,12 +5,23 @@ namespace Admin\Controllers;
 use Admin\Models\Entities\Usuario;
 use Admin\Models\Services\UsuarioService;
 use Application\Enum\MessageSkin;
+use Core\App;
 use Core\Config;
 use Core\Controller;
 use Core\Exceptions\ResourceNotFoundException;
 
 class UsuarioController extends Controller
 {
+    public function index()
+    {
+        try {
+            $this->set('usuarios', $this->getUsuarioService()->listar());
+        } catch (\Exception $e) {
+            $this->setMessage($e->getMessage(), MessageSkin::DANGER);
+            $this->redirect();
+        }
+    }
+
     /**
      * Cadastra um novo Usuario
      * @throws ResourceNotFoundException
@@ -44,6 +55,38 @@ class UsuarioController extends Controller
             }
         }
         $this->setTerminal();
+    }
+
+    /**
+     * Password alteration
+     */
+    public function alterarsenha()
+    {
+        if (App::getRequest()->is('post')) {
+            $userService = $this->getUsuarioService();
+            $userService->beginTransaction();
+            try {
+                $post = App::getRequest()->getPost();
+                if (empty($post['senha-atual']) || empty($post['nova-senha']) || empty($post['confirmar-senha'])) {
+                    throw new \Exception('Todos os campos são obrigatórios!');
+                }
+                $usuario = $userService->buscar($this->getUserSession()['id']);
+                if ($usuario->getSenha() !== md5($post['senha-atual'])) {
+                    throw new \Exception('Senha atual inválida!');
+                } elseif ($post['nova-senha'] !== $post['confirmar-senha']) {
+                    throw new \Exception('As Senhas não coincidem!');
+                } else {
+                    $usuario->setSenhaCriptografada($post['nova-senha']);
+                    $userService->salvar($usuario);
+                    $userService->commit();
+                    $this->setMessage('Senha alterada com sucesso!', MessageSkin::SUCCESS);
+                    $this->redirect(array('module' => 'admin', 'controller' => 'usuario', 'action' => 'alterarsenha'));
+                }
+            } catch (\Exception $e) {
+                $userService->rollback();
+                $this->setMessage($e->getMessage(), MessageSkin::DANGER);
+            }
+        }
     }
 
     public function login()

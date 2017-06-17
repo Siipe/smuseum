@@ -92,7 +92,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="senha">Senha*</label>
-                                <input type="password" class="form-control" id="senha" name="senha" required>
+                                <input type="password" class="form-control" id="senha" name="senha_criptografada" required>
                             </div>
                             <div class="text-right">
                                 <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Fechar</button>
@@ -127,7 +127,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="senha">Senha*</label>
-                                <input type="password" class="form-control" id="senha" name="senha" required>
+                                <input type="password" class="form-control" id="senha" name="senha_criptografada" required>
                             </div>
                             <div class="form-group">
                                 <label for="confirmar">Confirmar*</label>

@@ -40,7 +40,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="senha">Senha*</label>
-                                <input type="password" class="form-control" id="senha" name="senha">
+                                <input type="password" class="form-control" id="senha" name="senha_criptografada">
                             </div>
                             <div class="form-group">
                                 <label for="confirmar">Confirmar*</label>

@@ -40,6 +40,16 @@ class Usuario extends AbstractEntity
     }
 
     /**
+     * @param string $senha
+     * @return Usuario
+     */
+    public function setSenhaCriptografada($senha)
+    {
+        $this->senha = md5($senha);
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getNome()
@@ -102,12 +112,12 @@ class Usuario extends AbstractEntity
     }
 
     /**
-     * @param string $senha
+     * @param $senha
      * @return Usuario
      */
     public function setSenha($senha)
     {
-        $this->senha = md5($senha);
+        $this->senha = $senha;
         return $this;
     }
 

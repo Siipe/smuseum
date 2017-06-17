@@ -64,6 +64,15 @@ class Session
     }
 
     /**
+     * @param $name string
+     * @return bool
+     */
+    public function exists($name)
+    {
+        return isset($_SESSION[$name]);
+    }
+
+    /**
      * @param $name
      * @return null|mixed
      */

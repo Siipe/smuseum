@@ -9,9 +9,15 @@ abstract class AbstractService
      */
     private $connection;
 
-    public function __construct()
+    /**
+     * @var array|null
+     */
+    private $userSession;
+
+    public function __construct($idUser = null)
     {
         $this->connection = Connection::getInstance();
+        $this->userSession = $idUser;
     }
 
     public function beginTransaction()
@@ -35,5 +41,13 @@ abstract class AbstractService
     public function getConnection()
     {
         return $this->connection;
+    }
+
+    /**
+     * @return null|array
+     */
+    public function getUserSession()
+    {
+        return $this->userSession;
     }
 }
