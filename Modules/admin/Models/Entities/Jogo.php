@@ -50,7 +50,7 @@ class Jogo extends AbstractEntity
      */
     public function getPrecoFormatado($decimals = 2)
     {
-        return number_format($this->preco, $decimals);
+        return number_format($this->preco, $decimals, ',', '.');
     }
 
     /**

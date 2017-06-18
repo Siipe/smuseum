@@ -13,6 +13,13 @@ $.fn.hideLoadingSnippet = function() {
 };
 
 $(document).ready(function () {
+    $('.del').on('click', function(e) {
+        e.preventDefault();
+        confirmDialog('Remoção', 'Tem certeza de que deseja remover este item?', function() {
+            location.href = $(this).attr('href');
+        }.bind(this));
+    });
+
     $('.cancel-modal').on('click', function () {
         $('#modal-cropper').modal('hide');
         cleanCropperComponent();
@@ -49,24 +56,6 @@ function adicionarAoCarrinho(id, url) {
             }
         }
     });
-}
-
-function removerDoCarrinho(element, id, url) {
-    element = $(element);
-    confirmDialog('Remoção', 'Tem certeza de que deseja remover o item de código [' + id + ']?', function() {
-        async(
-            url,
-            {id : id},
-            function(resp) {
-                element.parents('tr').remove();
-                var carrinhoContainer = $('#carrinho-container');
-                if (carrinhoContainer.find('tbody').is(':empty')) {
-                    carrinhoContainer.empty().append('<p class="text-center p-10">Seu carrinho está vazio!</p>');
-                }
-                customAlert('fa fa-check', 'Sucesso!', resp.message);
-            }
-        );
-    })
 }
 
 function handleUpload(e) {

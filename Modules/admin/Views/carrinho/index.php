@@ -16,24 +16,33 @@ $itens = $data['itens'];
             <div class="box-body table-responsive no-padding">
                 <table class="table table-hover">
                     <thead>
-                    <tr>
-                        <th>Código do Produto</th>
-                        <th>Jogo</th>
-                        <th>Preço (R$)</th>
-                        <th>Quantidade</th>
-                        <th>Ação</th>
-                    </tr>
+                        <tr>
+                            <th>Código do Produto</th>
+                            <th>Jogo</th>
+                            <th>Preço (R$)</th>
+                            <th>Quantidade</th>
+                            <th>Ação</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($itens as $key => $value): ?>
+                    <?php
+                        $total = 0;
+                        foreach ($itens as $key => $value):
+                            for ($i=0; $i<$value['quantidade']; $i++) {
+                                $total += (int) $value['preco'];
+                            }
+                    ?>
                         <tr>
                             <td><?= $key ?></td>
                             <td><?= $value['nome'] ?></td>
-                            <td><?= number_format($value['preco'], 2) ?></td>
+                            <td><?= number_format($value['preco'], 2, ',', '.') ?></td>
                             <td><?= $value['quantidade'] ?></td>
-                            <td><a href="javascript:void(0)" title="Remover" onclick="removerDoCarrinho(this, '<?= $key ?>', '<?= $this->url(array('module' => 'admin', 'controller' => 'carrinho', 'action' => 'remover')) ?>')"><i class="fa fa-trash f-18 c-red" aria-hidden="true"></i></a></td>
+                            <td><a class="del" href="<?= $this->url(array('module' => 'admin', 'controller' => 'carrinho', 'action' => 'remover', 'id' => $key)) ?>" title="Remover"><i class="fa fa-trash f-18 c-red" aria-hidden="true"></i></a></td>
                         </tr>
                     <?php endforeach; ?>
+                    <tr>
+                        <td colspan="5"><strong>Total:</strong> R$ <?= number_format($total, 2, ',', '.') ?>
+                    </tr>
                     </tbody>
                 </table>
             </div>

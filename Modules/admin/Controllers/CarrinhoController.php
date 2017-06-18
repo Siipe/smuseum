@@ -44,11 +44,43 @@ class CarrinhoController extends Controller
         }
     }
 
-    public function remover()
+    /**
+     * Funcao de remover item do carrinho
+     */
+    public function remover($id = null)
     {
-        echo '<pre>';
-        print_r($this->getCarrinho());
-        exit;
+        try {
+            if (!$id || !((int) $id)) {
+                throw new \Exception('Id inválido!');
+            }
+            $carrinho = $this->getCarrinho();
+            $item = $carrinho[$id]['nome'];
+            unset($carrinho[$id]);
+            $this->atualizarCarrinho($carrinho);
+            $this->setMessage(sprintf('Item <strong>%s</strong> removido com sucesso!', $item), MessageSkin::SUCCESS);
+        } catch (\Exception $e) {
+            $this->setMessage($e->getMessage(), MessageSkin::DANGER);
+        }
+        $this->redirect(array('module' => 'admin', 'controller' => 'carrinho'));
+    }
+
+    public function finalizar()
+    {
+        try {
+            $carrinho = $this->getCarrinho();
+            $total = 0;
+
+            foreach ($carrinho as $key => $value) {
+                for ($i=0; $i<$value['quantidade']; $i++) {
+                    $total += (int) $value['preco'];
+                }
+            }
+
+            var_dump($total);
+            exit;
+        } catch (\Exception $e) {
+
+        }
     }
 
     /**

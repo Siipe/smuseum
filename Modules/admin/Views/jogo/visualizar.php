@@ -30,7 +30,7 @@ $jogo = $data['jogo'];
                 <a href="javascript:void(0)" onclick="adicionarAoCarrinho('<?= $jogo->getId() ?>', '<?= $this->url(array('module' => 'admin', 'controller' => 'carrinho', 'action' => 'adicionar')) ?>')" title="Adicionar ao carrinho"><i class="fa fa-cart-plus m-r-5 fa-2x c-purple" aria-hidden="true"></i></a>
                 <?php if ($jogo->getIdUsuarioInclusao() == $this->getUserSession()['id']): ?>
                     <a href="<?= $this->url(array('module' => 'admin', 'controller' => 'jogo', 'action' => 'editar', 'id' => $jogo->getId())) ?>" title="Editar"><i class="fa fa-edit fa-2x m-r-5" aria-hidden="true"></i></a>
-                    <a href="<?= $this->url(array('module' => 'admin', 'controller' => 'jogo', 'action' => 'excluir', 'id' => $jogo->getId())) ?>" title="Excluir"><i class="fa fa-trash fa-2x c-red m-r-5" aria-hidden="true"></i></a>
+                    <a class="del" href="<?= $this->url(array('module' => 'admin', 'controller' => 'jogo', 'action' => 'excluir', 'id' => $jogo->getId())) ?>" title="Excluir"><i class="fa fa-trash fa-2x c-red m-r-5" aria-hidden="true"></i></a>
                 <?php endif; ?>
             </div>
             <div class="text-right">
