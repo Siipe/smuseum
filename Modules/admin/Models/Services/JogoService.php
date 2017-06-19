@@ -101,7 +101,7 @@ class JogoService extends AbstractService
      */
     public function getUltimo()
     {
-        $query = 'SELECT id, nome, preco, plataforma, imagem, id_usuario_inclusao FROM ' . $this->table . ' WHERE id_usuario_inclusao = :id_usuario_inclusao ORDER BY id DESC LIMIT 1';
+        $query = 'SELECT id, nome, preco, plataforma, imagem, id_usuario_inclusao FROM ' . $this->table . ' WHERE id_usuario_inclusao = :id_usuario_inclusao AND ativo=TRUE ORDER BY id DESC LIMIT 1';
         $stmt = $this->getConnection()->prepare($query);
         $stmt->execute(array('id_usuario_inclusao' => $this->getUserSession()['id']));
         $result = $stmt->fetchAll();
