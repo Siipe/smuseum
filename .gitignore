@@ -3,4 +3,5 @@ composer.lock
 Vagrantfile
 .vagrant/
 ubuntu-xenial-16.04-cloudimg-console.log
-public/img/jogos/*
+!public/img/jogos/default.png
+public/img/jogos/

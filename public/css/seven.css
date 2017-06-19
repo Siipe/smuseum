@@ -4,7 +4,14 @@ div.g-recaptcha > div {height: auto; margin: 0 auto 15px}
 textarea {resize: none}
 .content .info-box .info-box-icon {line-height: 0}
 .navbar-nav>.user-menu>.dropdown-menu>li.user-header {height: 135px}
-.user-block img {height:150px; width: 150px; margin-right: 10px}
+.user-block img {height:150px; width: 150px; margin-right: 10px; float: left}
+
+.ellipsis {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 /* LOADING */
 #seven-loading {display: none}

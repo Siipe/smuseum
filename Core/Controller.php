@@ -35,6 +35,7 @@ class Controller
     {
         $this->request = $request;
         $this->session = $session;
+        $this->data = array();
     }
 
     /**
@@ -46,7 +47,7 @@ class Controller
     protected function set($key, $value = null)
     {
         if (is_array($key)) {
-            $this->data = $key + $this->data;
+            $this->data = array_merge($key, $this->data);
         } else {
             $this->data[$key] = $value;
         }

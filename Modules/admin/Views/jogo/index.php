@@ -25,8 +25,8 @@ $jogos = $data['jogos'];
 
                             <div class="info-box-content">
                                 <span class="info-box-text" title="<?= $jogo->getNome() ?>"><?= $jogo->getNome() ?></span>
-                                <span class="info-box-number f-14">R$ <?= $jogo->getPrecoFormatado() ?></span>
-                                <small>Plataforma: <?= $jogo->getPlataforma() ?></small>
+                                <span class="info-box-number ellipsis f-14" title="R$ <?= $jogo->getPrecoFormatado() ?>">R$ <?= $jogo->getPrecoFormatado() ?></span>
+                                <small class="ellipsis" title="<?= $jogo->getPlataforma() ?>">Plataforma: <?= $jogo->getPlataforma() ?></small>
                                 <div>
                                     <a href="<?= $this->url(array('module' => 'admin', 'controller' => 'jogo', 'action' => 'visualizar', 'id' => $jogo->getId())) ?>" title="Visualizar"><i class="fa fa-eye f-16 c-green m-r-5" aria-hidden="true"></i></a>
                                     <a href="javascript:void(0)" onclick="adicionarAoCarrinho('<?= $jogo->getId() ?>', '<?= $this->url(array('module' => 'admin', 'controller' => 'carrinho', 'action' => 'adicionar')) ?>')" title="Adicionar ao carrinho"><i class="fa fa-cart-plus m-r-5 c-purple" aria-hidden="true"></i></a>

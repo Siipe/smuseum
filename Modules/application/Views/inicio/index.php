@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="welcome">Seja bem vindo ao SUPER MUSEUM</h1>
-        <p>Aqui você encontra os MELHORES produtos da Nintendo!</p>
+        <p>Aqui você encontra os MELHORES Games!</p>
     </div>
 </div>
 <hr />

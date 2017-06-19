@@ -1,3 +1,8 @@
+<?php
+/** @var \Admin\Models\Entities\Usuario $usuario */
+$usuario = $this->data['usuario'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -28,11 +33,11 @@
                         <form class="form-signin" action="<?= $this->url(array('admin', 'usuario', 'login')) ?>" method="POST">
                             <div class="form-group">
                                 <label for="login">Login*</label>
-                                <input class="form-control" id="login" name="login">
+                                <input class="form-control" id="login" name="login" value="<?= $usuario->getLogin() ?>" required autofocus/>
                             </div>
                             <div class="form-group">
                                 <label for="senha">Senha*</label>
-                                <input type="password" class="form-control" id="senha" name="senha_criptografada">
+                                <input type="password" class="form-control" id="senha" name="senha_criptografada" required />
                             </div>
                             <div class="text-right">
                                 <a href="<?= $this->url(array(), false) ?>" class="btn btn-sm btn-default"><i class="fa fa-home m-r-5" aria-hidden="true"></i> Home</a>

@@ -46,7 +46,7 @@ abstract class AbstractService
     /**
      * @return null|array
      */
-    public function getUserSession()
+    protected function getUserSession()
     {
         return $this->userSession;
     }

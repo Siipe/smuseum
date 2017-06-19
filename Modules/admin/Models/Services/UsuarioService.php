@@ -95,7 +95,6 @@ class UsuarioService extends AbstractService
         if(empty($result)) {
             return false;
         }
-        $usuario = new Usuario();
         return $usuario->hydrate($result);
     }
 }

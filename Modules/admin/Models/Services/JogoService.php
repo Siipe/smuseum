@@ -97,18 +97,21 @@ class JogoService extends AbstractService
     }
 
     /**
-     * @param null $id
-     * @throws \Exception
+     * @return Jogo|null
      */
-    public function delete($id = null)
+    public function getUltimo()
     {
-        if (!$id) {
-            throw new \Exception('JOGO: Id inválido!');
-        }
-
-        $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
+        $query = 'SELECT id, nome, preco, plataforma, imagem, id_usuario_inclusao FROM ' . $this->table . ' WHERE id_usuario_inclusao = :id_usuario_inclusao ORDER BY id DESC LIMIT 1';
         $stmt = $this->getConnection()->prepare($query);
-        $stmt->execute(array('id' => $id));
+        $stmt->execute(array('id_usuario_inclusao' => $this->getUserSession()['id']));
+        $result = $stmt->fetchAll();
+
+        if (!empty($result)) {
+            $jogo = new Jogo();
+            $jogo->hydrate($result[0]);
+            return $jogo;
+        }
+        return null;
     }
 
     /**

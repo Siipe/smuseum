@@ -63,7 +63,8 @@ class Jogo extends AbstractEntity
      */
     public function getCaminhoImagem()
     {
-        return 'jogos' . DS . $this->imagem;
+        $imagem = $this->imagem ? $this->imagem : 'default.png';
+        return 'jogos' . DS . $imagem;
     }
 
     /**

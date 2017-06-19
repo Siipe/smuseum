@@ -13,6 +13,7 @@
         <?= $this->css('font-awesome-4.7.0/css/font-awesome.min') ?>
         <?= $this->css('business-frontpage') ?>
         <?= $this->css('custom-classes.min') ?>
+        <?= $this->css('seven') ?>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

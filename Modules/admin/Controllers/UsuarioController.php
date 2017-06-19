@@ -33,28 +33,42 @@ class UsuarioController extends Controller
             $this->redirect();
         }
         $request = $this->getRequest();
-        if ($request->is('post')) {
-            $usuario = new Usuario();
-            $uService = $this->getUsuarioService();
-            $uService->beginTransaction();
-            try {
-                $uService->salvar($usuario->hydrate($request->getPost()));
-                $uService->commit();
+        $usuario = new Usuario();
 
-                $sessionArray = array(
-                    'id' => $usuario->getId(),
-                    'name' => $usuario->getNome(),
-                    'date' => $usuario->getDataInclusaoFormatada()
-                );
-                $this->getSession()->setAttribute(Config::get('login-role'), $sessionArray);
+        try {
+            if ($request->is('post')) {
+                $post = $request->getPost();
+                $usuario->hydrate($post);
+                if (in_array('', $post) || in_array(null, $post)) {
+                    throw new \Exception('Todos os campos são obrigatórios!');
+                }
+                if ($post['senha_criptografada'] !== $post['confirmar']) {
+                    throw new \Exception('As senhas não coincidem!');
+                }
+                $uService = $this->getUsuarioService();
+                $uService->beginTransaction();
+                try {
+                    $uService->salvar($usuario);
+                    $uService->commit();
 
-                $this->setMessage(sprintf('Seja bem-vindo, %s! Aproveite!', $usuario->getNome()), MessageSkin::SUCCESS);
-                $this->redirect(array('module' => 'admin'));
-            } catch(\Exception $e) {
-                $this->setMessage($e->getMessage(), MessageSkin::DANGER);
+                    $sessionArray = array(
+                        'id' => $usuario->getId(),
+                        'name' => $usuario->getNome(),
+                        'date' => $usuario->getDataInclusaoFormatada()
+                    );
+                    $this->getSession()->setAttribute(Config::get('login-role'), $sessionArray);
+
+                    $this->setMessage(sprintf('Seja bem-vindo, %s! Aproveite!', $usuario->getNome()), MessageSkin::SUCCESS);
+                    $this->redirect(array('module' => 'admin'));
+                } catch(\Exception $e) {
+                    $uService->rollback();
+                    throw $e;
+                }
             }
+        } catch (\Exception $e) {
+            $this->setMessage($e->getMessage(), MessageSkin::DANGER);
         }
-        $this->setTerminal();
+        $this->set('usuario', $usuario)->setTerminal();
     }
 
     /**
@@ -97,9 +111,10 @@ class UsuarioController extends Controller
         }
 
         $request = $this->getRequest();
+        $usuario = new Usuario();
         if ($request->is('post')) {
-            $usuario = new Usuario();
-            if ($usuario = $this->getUsuarioService()->autenticar($usuario->hydrate($request->getPost()))) {
+            $usuario->hydrate($request->getPost());
+            if ($this->getUsuarioService()->autenticar($usuario)) {
                 $sessionArray = array(
                     'id' => $usuario->getId(),
                     'name' => $usuario->getNome(),
@@ -110,7 +125,7 @@ class UsuarioController extends Controller
             }
             $this->setMessage('Falha na Autenticação!', MessageSkin::DANGER);
         }
-        $this->setTerminal();
+        $this->set('usuario', $usuario)->setTerminal();
     }
 
     /**
@@ -118,7 +133,8 @@ class UsuarioController extends Controller
      */
     public function logout()
     {
-        $this->getSession()->destroy();
+        $this->getSession()->unsetAttribute(Config::get('login-role'));
+        $this->setMessage('Você está deslogado!', MessageSkin::INFO);
         $this->redirect(array(), false);
     }
 

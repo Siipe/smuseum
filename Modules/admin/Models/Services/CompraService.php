@@ -52,23 +52,18 @@ class CompraService extends AbstractService
             }
             return $compra;
         }
-        throw new \Exception('compra inexistente!');
+        throw new \Exception('Compra inexistente!');
     }
 
     /**
-     * @param null $idUsuario
      * @return Compra[]
      * @throws \Exception
      */
-    public function listar($idUsuario = null)
+    public function listar()
     {
-        if (!$idUsuario) {
-            throw new \Exception('COMPRA: Id inválido!');
-        }
-
         $query = 'SELECT id, data_inclusao FROM ' . $this->table . ' WHERE id_usuario = :id_usuario';
         $stmt = $this->getConnection()->prepare($query);
-        $stmt->execute(array('id_usuario' => $idUsuario));
+        $stmt->execute(array('id_usuario' => $this->getUserSession()['id']));
         $result = $stmt->fetchAll();
         $listCompra = array();
 
@@ -78,6 +73,27 @@ class CompraService extends AbstractService
             $listCompra[] = $compra;
         }
         return $listCompra;
+    }
+
+    /**
+     * @return Compra|null
+     * @throws \Exception
+     */
+    public function getUltima()
+    {
+        $query = 'SELECT id, data_inclusao FROM ' . $this->table . ' WHERE id_usuario = :id_usuario ORDER BY id DESC LIMIT 1';
+        $stmt = $this->getConnection()->prepare($query);
+        $stmt->execute(array('id_usuario' => $this->getUserSession()['id']));
+        $result = $stmt->fetchAll();
+
+        if (!empty($result)) {
+            $compra = new Compra();
+            $compra->hydrate($result[0]);
+            $jcService = new JogoCompraService($this->getUserSession());
+            $compra->setItens($jcService->buscarPorCompra($compra->getId()));
+            return $compra;
+        }
+        return null;
     }
 
     /**
