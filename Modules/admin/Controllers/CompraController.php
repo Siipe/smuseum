@@ -14,7 +14,7 @@ class CompraController extends Controller
     public function index()
     {
         try {
-            $this->set('compras', $this->getCompraService()->listar($this->getUserSession()['id']));
+            $this->set('compras', $this->getCompraService()->listar());
         } catch (\Exception $e) {
             $this->setMessage($e->getMessage(), MessageSkin::DANGER);
             $this->redirect();
