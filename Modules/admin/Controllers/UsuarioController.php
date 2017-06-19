@@ -133,8 +133,7 @@ class UsuarioController extends Controller
      */
     public function logout()
     {
-        $this->getSession()->unsetAttribute(Config::get('login-role'));
-        $this->setMessage('Você está deslogado!', MessageSkin::INFO);
+        $this->getSession()->destroy();
         $this->redirect(array(), false);
     }
 
