@@ -36,6 +36,7 @@
                             </div>
                             <div class="text-right">
                                 <a href="<?= $this->url(array(), false) ?>" class="btn btn-sm btn-default"><i class="fa fa-home m-r-5" aria-hidden="true"></i> Home</a>
+                                <a href="<?= $this->url(array('module' => 'admin', 'controller' => 'usuario', 'action' => 'cadastrar')) ?>" class="btn btn-sm btn-success"><i class="fa fa-plus m-r-5" aria-hidden="true"></i> Cadastro</a>
                                 <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-send m-r-5" aria-hidden="true"></i> Enviar</button>
                             </div>
                         </form>

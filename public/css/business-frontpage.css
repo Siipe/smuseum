@@ -5,6 +5,9 @@ h1.welcome {font-size: 2em}
 .img-center {margin: 0 auto}
 footer {margin-top: 25px; min-height:50px; background: #888; color: #FFF; line-height: 3.7}
 footer a, footer a:active, footer a:hover, footer a:visited {color: #FFF}
+a.module-wrapper {color: #333; text-decoration: none}
+a.module-wrapper > div {padding: 10px 7px; min-height: 200px; border-radius: 2px}
+a.module-wrapper > div:hover {background: #F1F1F1}
 div.subscriptions {position: absolute; bottom: 0; left: 0; right: 0}
 div.subscriptions a {color: #333}
 .affix {top: 0; width: 100%; z-index:1000}
@@ -15,3 +18,34 @@ div.subscriptions a {color: #333}
 .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {background: #605ca8; border-color: #605ca8}
 div.entrance {margin-top: 20px}
 div.entrance a {color: #333; font-size: .9em}
+
+.info-box {display: block; min-height: 90px; background: #FFF; width: 100%; box-shadow: 0 1px 1px rgba(0,0,0,0.1); border-radius: 2px; margin-bottom: 15px}
+.info-box-icon {border-top-left-radius: 2px; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 2px; display: block; float: left; height: 90px; width: 90px; text-align: center; font-size: 45px; line-height: 90px; background: rgba(0,0,0,0.2)}
+.info-box-content {padding: 5px 10px; margin-left: 90px}
+.info-box-icon > img {max-width: 100%}
+.info-box-text {text-transform: uppercase}
+.progress-description, .info-box-text {display: block; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis}
+.info-box-number {display: block; font-weight: bold; font-size: 18px}
+.info-box .info-box-icon {line-height: 0}
+
+.box-widget {border: none; position: relative}
+.box {position: relative; border-radius: 3px; background: #F1F1F1; border-top: 3px solid #DDD; margin-bottom: 20px; width: 100%; box-shadow: 0 1px 1px rgba(0,0,0,0.1)}
+.box-header.with-border {border-bottom: 1px solid #f4f4f4}
+.box-header {color: #444; display: block; padding: 10px; position: relative}
+.user-block::before, .user-block::after {content: " "; display: table}
+.box-header::before, .box-body::before, .box-footer::before, .box-header::after, .box-body::after, .box-footer::after {content: " "; display: table}
+.user-block img {height: 150px; width: 150px; margin-right: 10px; float: left}
+.user-block .username {font-size: 16px; font-weight: 600}
+.user-block .username, .user-block .description, .user-block .comment {display: block; margin-left: 50px}
+.user-block .description {color: #999; font-size: 13px}
+.user-block .username, .user-block .description, .user-block .comment {display: block; margin-left: 50px}
+.user-block::after {clear: both}
+.user-block::before, .user-block::after {content: " "; display: table}
+.box-header::after, .box-body::after, .box-footer::after {clear: both}
+.box-body {border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; padding: 10px}
+.attachment-block {border-top: solid 1px #DDD; padding: 10px 5px 5px 5px; margin-bottom: 10px}
+.attachment-block .attachment-heading {margin: 0}
+.attachment-block .attachment-text {color: #555}
+
+.bg-olive {background-color: #3d9970 !important; color: #FFF}
+.bg-olive:hover {color: #FFF}

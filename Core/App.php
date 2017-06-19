@@ -36,7 +36,11 @@ final class App
             //Defini-se aqui rotas que nao requerem autenticacao
             self::$allowed = array(
                 'application' => array(
-                    'inicio'
+                    'inicio',
+                    'jogo' => array(
+                        'index',
+                        'visualizar'
+                    )
                 ),
                 'admin' => array(
                     'usuario' => array(
@@ -114,7 +118,7 @@ final class App
     {
         if (!self::isAllowed()) {
             self::$session->unsetAttribute('last-activity');
-            self::$router->redirect(array('route' => self::$router->getModule(), 'controller' => 'usuario', 'action' => 'login'));
+            self::$router->redirect(array('module' => 'admin', 'controller' => 'usuario', 'action' => 'login'));
         }
     }
 

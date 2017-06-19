@@ -56,12 +56,18 @@
                                         <li><a href="<?= $this->url(array('module' => 'admin', 'controller' => 'jogo', 'action' => 'inserir')) ?>">Inserir</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="<?= $this->url(array('module' => 'admin', 'controller' => 'carrinho')) ?>"><i class="fa fa-cart-plus m-r-5" aria-hidden="true"></i> Carrinho</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-cart-plus m-r-5" aria-hidden="true"></i> Compras <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="<?= $this->url(array('module' => 'admin', 'controller' => 'compra')) ?>">Ver todos</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="<?= $this->url(array('module' => 'admin', 'controller' => 'carrinho')) ?>">Carrinho</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                             <form class="navbar-form navbar-left" role="search" action="<?= $this->url(array('module' => 'admin', 'controller' => 'jogo')) ?>">
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="navbar-search-input" name="pesquisa" placeholder="Pesquisar Jogo" value="<?= \Core\App::getRequest()->getGet('pesquisa') ?>">
-                                    <button type="submit" class="btn bg-olive btn-flat"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                                 </div>
                             </form>
                         </div>

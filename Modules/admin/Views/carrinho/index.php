@@ -37,7 +37,7 @@ $itens = $data['itens'];
                             <td><?= $value['nome'] ?></td>
                             <td><?= number_format($value['preco'], 2, ',', '.') ?></td>
                             <td><?= $value['quantidade'] ?></td>
-                            <td><a class="del" href="<?= $this->url(array('module' => 'admin', 'controller' => 'carrinho', 'action' => 'remover', 'id' => $key)) ?>" title="Remover"><i class="fa fa-trash f-18 c-red" aria-hidden="true"></i></a></td>
+                            <td><a data-message="<?= sprintf('Deseja excluir o item <strong>%s</strong>?', $value['nome']) ?>" class="confirm" href="<?= $this->url(array('module' => 'admin', 'controller' => 'carrinho', 'action' => 'remover', 'id' => $key)) ?>" title="Remover"><i class="fa fa-trash f-18 c-red" aria-hidden="true"></i></a></td>
                         </tr>
                     <?php endforeach; ?>
                     <tr>
@@ -48,7 +48,7 @@ $itens = $data['itens'];
             </div>
             <div class="text-right p-10">
                 <a href="<?= $this->url() ?>" class="btn btn-sm btn-default"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
-                <a href="<?= $this->url(array('module' => 'admin', 'controller' => 'carrinho', 'action' => 'finalizar')) ?>" class="btn btn-sm btn-primary">Finalizar compra</a>
+                <a data-message="<?= sprintf('Valor total de R$ %s. Deseja finalizar a compra?', number_format($total, 2, ',', '.')) ?>" href="<?= $this->url(array('module' => 'admin', 'controller' => 'compra', 'action' => 'finalizar')) ?>" class="confirm btn btn-sm btn-primary">Finalizar compra</a>
             </div>
         <?php endif; ?>
     </div>

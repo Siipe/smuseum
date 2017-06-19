@@ -6,10 +6,6 @@ textarea {resize: none}
 .navbar-nav>.user-menu>.dropdown-menu>li.user-header {height: 135px}
 .user-block img {height:150px; width: 150px; margin-right: 10px}
 
-a.module-wrapper {color: #333; text-decoration: none}
-a.module-wrapper > div {padding: 10px 7px; min-height: 200px; border-radius: 2px}
-a.module-wrapper > div:hover {background: #F1F1F1}
-
 /* LOADING */
 #seven-loading {display: none}
 

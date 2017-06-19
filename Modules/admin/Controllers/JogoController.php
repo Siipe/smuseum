@@ -3,23 +3,12 @@
 namespace Admin\Controllers;
 
 use Admin\Models\Entities\Jogo;
-use Admin\Models\Services\JogoService;
+use Application\Controllers\JogoBaseController;
 use Application\Enum\MessageSkin;
-use Core\Controller;
 use Seven\Utils;
 
-class JogoController extends Controller
+class JogoController extends JogoBaseController
 {
-    public function index()
-    {
-        try {
-            $this->set('jogos', $this->getJogoService()->listar($this->getRequest()->getGet('pesquisa')));
-        } catch (\Exception $e) {
-            $this->setMessage($e->getMessage(), MessageSkin::DANGER);
-            $this->redirect();
-        }
-    }
-
     public function inserir()
     {
         $request = $this->getRequest();
@@ -129,7 +118,7 @@ class JogoController extends Controller
 
             $jService->beginTransaction();
             try {
-                $jService->delete($jogo->getId());
+                $jService->salvar($jogo->setAtivo(false));
                 $jService->commit();
 
                 $this->setMessage(sprintf('Jogo [%s] excluído com sucesso!', $jogo->getNome()), MessageSkin::SUCCESS);
@@ -142,13 +131,5 @@ class JogoController extends Controller
         }
 
         $this->redirect(array('module' => 'admin', 'controller' => 'jogo'));
-    }
-
-    /**
-     * @return JogoService
-     */
-    private function getJogoService()
-    {
-        return $this->getService(JogoService::class);
     }
 }

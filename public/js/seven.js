@@ -13,9 +13,10 @@ $.fn.hideLoadingSnippet = function() {
 };
 
 $(document).ready(function () {
-    $('.del').on('click', function(e) {
+    $('a.confirm').on('click', function(e) {
         e.preventDefault();
-        confirmDialog('Remoção', 'Tem certeza de que deseja remover este item?', function() {
+        var message = $(this).data('message') || 'Deseja prosseguir';
+        confirmDialog('Confirmação', message, function() {
             location.href = $(this).attr('href');
         }.bind(this));
     });

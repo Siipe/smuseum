@@ -54,7 +54,7 @@
                             <a href="<?= $this->url() ?>"><i class="fa fa-home m-r-5" aria-hidden="true"></i> Home</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-rocket m-r-5" aria-hidden="true"></i> Jogos</a>
+                            <a href="<?= $this->url(array('controller' => 'jogo')) ?>"><i class="fa fa-rocket m-r-5" aria-hidden="true"></i> Jogos</a>
                         </li>
                     </ul>
                 </div>
@@ -68,14 +68,6 @@
         <div class="container">
             <?= $data['content'] ?>
         </div>
-
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 text-left">&copy; <?= date('Y') ?> - All Rights Reserved, CES-JF</div>
-                </div>
-            </div>
-        </footer>
 
         <div id="modal-login" class="modal fade" role="dialog">
             <div class="modal-dialog">

@@ -45,6 +45,11 @@ class Jogo extends AbstractEntity
     private $usuario;
 
     /**
+     * @var bool
+     */
+    private $ativo;
+
+    /**
      * @param int $decimals
      * @return string
      */
@@ -155,8 +160,10 @@ class Jogo extends AbstractEntity
      */
     public function setDataInclusao($data_inclusao)
     {
-        $datetime = \DateTime::createFromFormat('Y-m-d H:i:s', $data_inclusao);
-        $this->data_inclusao = $datetime;
+        if (!($data_inclusao instanceof \DateTime)) {
+            $data_inclusao = \DateTime::createFromFormat('Y-m-d H:i:s', $data_inclusao);
+        }
+        $this->data_inclusao = $data_inclusao;
         return $this;
     }
 
@@ -205,10 +212,30 @@ class Jogo extends AbstractEntity
     }
 
     /**
-     * @param Usuario $usuario
+     * @param $usuario Usuario
+     * @return $this
      */
     public function setUsuario($usuario)
     {
         $this->usuario = $usuario;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAtivo()
+    {
+        return $this->ativo;
+    }
+
+    /**
+     * @param $ativo
+     * @return $this
+     */
+    public function setAtivo($ativo)
+    {
+        $this->ativo = $ativo;
+        return $this;
     }
 }

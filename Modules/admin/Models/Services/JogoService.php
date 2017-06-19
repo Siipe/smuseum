@@ -29,8 +29,9 @@ class JogoService extends AbstractService
             $query = 'INSERT INTO ' . $this->table . '(nome, plataforma, descricao, preco, id_usuario_inclusao, imagem) VALUES (:nome, :plataforma, :descricao, :preco, :id_usuario_inclusao, :imagem)';
             $bindParams['id_usuario_inclusao'] = $jogo->getIdUsuarioInclusao();
         } else {
-            $query = 'UPDATE ' . $this->table . ' SET nome=:nome, plataforma=:plataforma, descricao=:descricao, preco=:preco, imagem=:imagem WHERE id = :id';
+            $query = 'UPDATE ' . $this->table . ' SET nome=:nome, plataforma=:plataforma, descricao=:descricao, preco=:preco, imagem=:imagem, ativo=:ativo WHERE id = :id';
             $bindParams['id'] = $jogo->getId();
+            $bindParams['ativo'] = intval($jogo->isAtivo());
         }
 
         $stmt = $this->getConnection()->prepare($query);
@@ -44,13 +45,13 @@ class JogoService extends AbstractService
      */
     public function listar($like = null)
     {
-        $query = 'SELECT id, nome, preco, plataforma, imagem, id_usuario_inclusao FROM ' . $this->table;
+        $query = 'SELECT id, nome, preco, plataforma, imagem, id_usuario_inclusao, ativo FROM ' . $this->table . ' WHERE 1';
         $bindParams = null;
         if ($like) {
-            $query .= ' WHERE nome LIKE ?';
+            $query .= ' AND nome LIKE ?';
             $bindParams = array("%$like%");
         }
-        $query .= ' ORDER BY id DESC';
+        $query .= ' AND ativo=TRUE ORDER BY id DESC';
         $stmt = $this->getConnection()->prepare($query);
         $stmt->execute($bindParams);
         $result = $stmt->fetchAll();
@@ -66,17 +67,20 @@ class JogoService extends AbstractService
 
     /**
      * @param null $id
-     * @param null $buscarUsuario
-     * @return Jogo|null
+     * @param bool $buscarUsuario
+     * @param bool $buscarInativo
+     * @return Jogo
      * @throws \Exception
      */
-    public function buscar($id = null, $buscarUsuario = null)
+    public function buscar($id = null, $buscarUsuario = false, $buscarInativo = false)
     {
         if (!$id) {
             throw new \Exception('JOGO: Id inválido!');
         }
-
-        $query = 'SELECT id, nome, descricao, preco, plataforma, data_inclusao, id_usuario_inclusao, imagem FROM ' . $this->table . ' WHERE id = :id';
+        $query = 'SELECT id, nome, descricao, preco, plataforma, data_inclusao, id_usuario_inclusao, imagem, ativo FROM ' . $this->table . ' WHERE id = :id';
+        if (!$buscarInativo) {
+            $query .= ' AND ativo=TRUE';
+        }
         $stmt = $this->getConnection()->prepare($query);
         $stmt->execute(array('id' => $id));
 
